@@ -79,39 +79,77 @@ for row in range(rowcount):
 #%%
 
 # Add Sorted Fields
-
-ProdYearSetList = {}
+# By Product Alphabetically
+# By Year Ascending
 
 for row in range(rowcount):
     Product = row_dict[row]['Product']
     Year = row_dict[row]['Year']
     
     if row == 0:
-        ProdYearSetList = {(Product, Year)}
+        ProdYearSet = {(Product, Year)}
     else:
-        ProdYearSetList.add((Product, Year))
+        ProdYearSet.add((Product, Year))
 
-print(ProdYearSetList)
-        
-# Do a set for these two and sort first
-# financial product (Use Product Field - Find Distinct)
-# year (Date received - use datetime)
+ProdYearSetList = list(ProdYearSet)
+ProdYearSetList.sort()
 
-# SORTED BY
-# product (alphabetically)
-# year (ascending)
-
-#%%
-            
-# Add Other Fields
-
-# the total number of complaints (sum will be row count minus header)
-# number of companies receiving a complaint (Count Distinct Company)
-# highest percentage of complaints directed at a single company (rounded whole number).
-         
-#%%
-        
 # Create Final Dictionary
+
+finalrowcnt = len(ProdYearSetList)
+final_csv = {}
+
+for tup in ProdYearSetList:
+    tupindex = ProdYearSetList.index(tup)
+    final_csv[tupindex] = {}
+    final_csv[tupindex]['Product'] = tup[0]
+    final_csv[tupindex]['Year'] = tup[1]
+
+#%%
+
+# Add Remaining Columns
+    
+for rows in range(finalrowcnt):
+    y = final_csv[rows]['Year']
+    p = final_csv[rows]['Product']
+    
+    # Total Number of Complaints
+    
+    NumComplaints = 0
+
+    for row in range(rowcount):
+        
+        if p == row_dict[row]['Product'] and y == row_dict[row]['Year']:
+            NumComplaints = NumComplaints+1
+    
+    final_csv[rows]['Number of Complaints'] = NumComplaints
+    
+    # Number of Companies Receiving Complaint
+    
+    compDict = {}
+    
+    for row in range(rowcount):
+        
+        if p == row_dict[row]['Product'] and y == row_dict[row]['Year']:
+            c = row_dict[row]['Company']
+            
+            if c not in compDict.keys():
+                compDict[c]=1
+            else:
+                compDict[c]=compDict[c]+1
+    final_csv[rows]['Number of Complaint Companies']=len(list(compDict.keys()))
+    
+    # Highest Percentage of Complaints
+    
+    compList = []
+    for key in list(compDict.keys()):
+        compList.append(compDict[key])
+    
+    percent = int(max(compList)/sum(compList)*100)
+    final_csv[rows]['Highest Complaint Percentage'] = percent
+             
+#%%
+print(final_csv)   
 
 '''
 OUTPUT SHOULD BE:
@@ -131,3 +169,5 @@ file.close()
 file.writerow(ROWLIST)
 
 # FINAL PRODUCT: report.csv
+
+# Source: https://realpython.com/python-csv/#writing-csv-files-with-csv

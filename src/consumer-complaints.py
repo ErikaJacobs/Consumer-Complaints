@@ -1,21 +1,17 @@
 
 #%%
 
-# Read CSV
-
 import os
+wd = str(os.getcwd())
 
-# Set working directory for any computer/os - do this later
-
-#%%
+if '/src' in wd:
+    wd.replace('/src','')
 
 # Read CSV
 
 import csv
 
-# Change this string to include wd later
-
-csvfile = 'C:/Users/cluel/Documents/GitHub/Consumer-Complaints-Erika-Jacobs-Insight-App/input/complaints.csv'
+csvfile = wd+'/input/complaints.csv'
 
 file = open(csvfile, "r")
 data = list(csv.reader(file))
@@ -28,11 +24,9 @@ rowcount = len(data)-1
 # Within row, make dictionary of columns with header as key
 
 row_dict = {}
-column_list = []
 
 # Column Names
-for header in data[0]:  
-    column_list.append(header)
+column_list = data[0]
     
 for row in data:
     
@@ -147,27 +141,19 @@ for rows in range(finalrowcnt):
     
     percent = int(max(compList)/sum(compList)*100)
     final_csv[rows]['Highest Complaint Percentage'] = percent
-             
-#%%
-print(final_csv)   
-
-'''
-OUTPUT SHOULD BE:
-Credit reporting, credit repair services, or other personal consumer reports 2019 3 2 66.6%
-Credit reporting, credit repair services, or other personal consumer reports 2020 1 1 100%
-Debt Collection 2019 1 1 100%
-'''
 
 #%%
 
 # Write Report - Ideas
 
-file = open(csv, "wt")
-file.write(data)
-file.close()
+file = wd+'/output/report.csv'
 
-file.writerow(ROWLIST)
+fieldnames = list(final_csv[0].keys())
 
-# FINAL PRODUCT: report.csv
+with open(file, 'w', newline='') as csvfile:
+    write = csv.DictWriter(csvfile, fieldnames = fieldnames)
 
-# Source: https://realpython.com/python-csv/#writing-csv-files-with-csv
+    write.writeheader()
+    
+    for rows in range(finalrowcnt):
+        write.writerow(final_csv[rows])

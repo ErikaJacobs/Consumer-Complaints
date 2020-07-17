@@ -2,7 +2,8 @@
 #%%
 
 import os
-wd = str(os.getcwd())
+
+wd = str(os.path.dirname(os.path.realpath(__file__)))
 
 if '/src' in wd:
     wd.replace('/src','')

@@ -52,10 +52,9 @@ for row in range(rowcount):
     
     for column in column_list:
         
-        # Make Company Lower Case
-        if column == 'Company':
+        # Make Company and Product Lower Case
+        if column == 'Company' or column == 'Product':
             row_dict[row][column] = row_dict[row][column].lower()
-            continue
             
         # Make Year Field
         if column == "Date received":
@@ -156,7 +155,7 @@ fieldnames = list(final_csv[0].keys())
 with open(file, 'w', newline='') as csvfile:
     write = csv.DictWriter(csvfile, fieldnames = fieldnames)
 
-    write.writeheader()
+    #write.writeheader()
     
     for rows in range(finalrowcnt):
         write.writerow(final_csv[rows])

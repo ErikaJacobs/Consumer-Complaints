@@ -1,12 +1,14 @@
 
 #%%
-
 import os
 
 wd = str(os.path.dirname(os.path.realpath(__file__)))
 
+if '/src/' in wd:
+    wd = wd.replace('/src/','')
+
 if '/src' in wd:
-    wd.replace('/src','')
+    wd = wd.replace('/src','')
 
 # Read CSV
 

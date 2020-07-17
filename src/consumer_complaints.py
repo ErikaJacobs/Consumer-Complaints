@@ -141,7 +141,7 @@ for rows in range(finalrowcnt):
     for key in list(compDict.keys()):
         compList.append(compDict[key])
     
-    percent = int(max(compList)/sum(compList)*100)
+    percent = round(max(compList)/sum(compList)*100)
     final_csv[rows]['Highest Complaint Percentage'] = percent
 
 #%%
@@ -150,7 +150,7 @@ for rows in range(finalrowcnt):
 
 file = wd+'/output/report.csv'
 
-fieldnames = list(final_csv[0].keys())
+fieldnames = ['Product', 'Year', 'Number of Complaints', 'Number of Complaint Companies', 'Highest Complaint Percentage']
 
 with open(file, 'w', newline='') as csvfile:
     write = csv.DictWriter(csvfile, fieldnames = fieldnames)
@@ -158,4 +158,10 @@ with open(file, 'w', newline='') as csvfile:
     #write.writeheader()
     
     for rows in range(finalrowcnt):
-        write.writerow(final_csv[rows])
+        write.writerow({fieldnames[0]: final_csv[rows][fieldnames[0]], 
+        fieldnames[1]: final_csv[rows][fieldnames[1]],
+        fieldnames[2]: final_csv[rows][fieldnames[2]],
+        fieldnames[3]: final_csv[rows][fieldnames[3]],
+        fieldnames[4]: final_csv[rows][fieldnames[4]]})
+
+# %%

@@ -66,7 +66,7 @@ for row in range(rowcount):
         
         # Double Quote Product (Because CSV)
         if column == 'Product' and ',' in row_dict[row][column]:
-            row_dict[row][column] = '"'+row_dict[row][column]+'"' 
+            row_dict[row][column] = row_dict[row][column].replace("'", '"')
             continue
         
         else:

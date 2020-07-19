@@ -1,7 +1,7 @@
 # Consumer Complaints: Insight Application for Erika Jacobs
 
 ## Summary
-This project reads consumer complaints csv file and provides the financial product and year, the total number of complaints, number of companies receiving a complaint, and the highest percentage of complaints directed at a single company.
+This project reads a consumer complaints csv file and provides the financial product and year, the total number of complaints, number of companies receiving a complaint, and the highest percentage of complaints directed at a single company.
 
 ## Environment
 This project was developed using Python 3.8.2 and Ubuntu 20.04 (via Windows WSL). A version of Python 3.8 and a Linux environment will be required.
@@ -11,12 +11,19 @@ To ensure the version of your Python3 installation is compatible, please execute
 ```/usr/bin/python3 --version```
 
 ## Directions
-After downloading a copy of this repository, place a "complaints.csv" file in the input folder within the main repository directory.
+After downloading a copy of this repository, place a "complaints.csv" file in the input folder within the main repository directory. Once this is complete, the code can be run.
 
 The file "complaints.csv" can contain any columns in any order. However, the complaints.csv file *must* include the following columns in order to run successfully:
 * Date received
 * Product
 * Company
+
+The output of the code execution will be placed in the output folder within the main repository directory shortly after the code is run. The output will also be a csv file, featuring the following fields (In this order from left to right):
+* Product
+* Year
+* Number of Complaints
+* Number of Companies
+* Largest Percentage of Complaints From Single Company
 
 ## How To Run
 To run the code for this project, type the following code into a Linux command line:

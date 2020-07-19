@@ -4,9 +4,9 @@
 This project reads consumer complaints csv file and provides the financial product and year, the total number of complaints, number of companies receiving a complaint, and the highest percentage of complaints directed at a single company.
 
 ## Environment
-Any version of Python3. This project was developed using Python 3.8.2 and Ubuntu 20.04 (via Windows WSL). Any version of Python3 should be able to run this project. While this project was designed to run on any operating system, it is recommended to use a Linux environment.
+This project was developed using Python 3.8.2 and Ubuntu 20.04 (via Windows WSL). A version of Python 3.8 and a Linux environment will be required.
 
-To ensure you have an installation of Python3, please execute the following command on the Linux environment command line prior to execution:
+To ensure the version of your Python3 installation is compatible, please execute the following command on the Linux environment command line prior to execution:
 
 ```/usr/bin/python3 --version```
 

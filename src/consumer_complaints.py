@@ -37,13 +37,15 @@ def create_rowdict(wd, data):
 
     row_dict = {}
         
-    for row in data:
+    for i in range(len(data)):
+
+        row = data[i]
         
-        if data.index(row) == 0:
+        if i == 0:
             continue
         
         else:
-            rowindex = data.index(row)-1
+            rowindex = i-1
             row_dict[rowindex] = {}
             
             for column in row:
@@ -69,7 +71,10 @@ def prepare_data(row_dict, data):
             # Make Year Field
             if column == "Date received":
                 from datetime import datetime
-                dateyear = datetime.strptime(row_dict[row][column], '%Y-%m-%d')
+                if '/' in row_dict[row][column]:
+                    dateyear = datetime.strptime(row_dict[row][column], '%m/%d/%Y')
+                if '-' in row_dict[row][column]:
+                    dateyear = datetime.strptime(row_dict[row][column], '%Y-%m-%d')
                 year = dateyear.year
                 row_dict[row]['Year']=year
                 continue
@@ -113,8 +118,6 @@ def final_csv(row_dict, ProdYearSetList):
         final_csv[tupindex] = {}
         final_csv[tupindex]['Product'] = tup[0]
         final_csv[tupindex]['Year'] = tup[1]
-
-    #%%
 
     # Add Remaining Columns
      

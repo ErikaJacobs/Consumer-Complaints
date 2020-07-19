@@ -1,10 +1,30 @@
 # Consumer Complaints: Insight Application for Erika Jacobs
 
 ## Summary
-This project eads consumer complaints csv file and provides the financial product and year, the total number of complaints, number of companies receiving a complaint, and the highest percentage of complaints directed at a single company.
+This project reads consumer complaints csv file and provides the financial product and year, the total number of complaints, number of companies receiving a complaint, and the highest percentage of complaints directed at a single company.
 
-## Test Suite
-The test suite was used to validate the source code. The test suite includes the following tests:
+## Environment
+Any version of Python3. This project was developed using Python 3.8.2 and Ubuntu 20.04 (via Windows WSL). Any version of Python3 should be able to run this project. While this project was designed to run on any operating system, it is recommended to use a Linux environment.
+
+To ensure you have an installation of Python3, please execute the following command on the Linux environment command line prior to execution:
+
+```/usr/bin/python3 --version```
+
+## Directions
+After downloading a copy of this repository, place a "complaints.csv" file in the input folder within the main repository directory.
+
+The file "complaints.csv" can contain any columns in any order. However, the complaints.csv file *must* include the following columns in order to run successfully:
+* Date received
+* Product
+* Company
+
+## How To Run
+To run the code for this project, type the following code into a Linux command line:
+
+```sh run.sh```
+
+## Test Suite Folder
+The test suite folder features files that were used to validate the source code. The test suite includes the following tests:
 * Test 1: Overall General Test - Provided By Insight
 * Test 2: Tests company case sensitivity
 * Test 3: Tests product case sensitivity
@@ -15,3 +35,6 @@ The test suite was used to validate the source code. The test suite includes the
 * Test 8: Tests highest percentage of compaints directed at a single company
 
 The csv for each test is located in the "input" folder of its directory as its own "complaints.csv" file. Each respective test can be placed into the input folder in the main directory of this repository to run the code. The csv output of each test is located in the output of its directory.
+
+## Source code
+The source code is located in the src directory of the repository. 

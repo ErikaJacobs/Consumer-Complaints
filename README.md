@@ -26,7 +26,7 @@ The output of the code execution will be placed in the output folder within the 
 * Largest Percentage of Complaints From Single Company
 
 ## How To Run
-To run the code for this project, type the following code into a Linux command line:
+From the main repository directory on the Linux Command Line, type and execute the following code:
 
 ```sh run.sh```
 

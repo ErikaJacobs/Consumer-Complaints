@@ -41,7 +41,9 @@ The test suite folder features files that were used to validate the source code.
 * Test 7: Tests number of companies receiving a complaint
 * Test 8: Tests highest percentage of compaints directed at a single company
 
-The csv for each test is located in the "input" folder of its directory as its own "complaints.csv" file. Each respective test can be placed into the input folder in the main directory of this repository to run the code. The csv output of each test is located in the output of its directory.
+The csv for each test is located in the "input" folder of that test's directory as its own "complaints.csv" file. Each respective test can be placed into the input folder in the main directory of this repository to run the code. The csv output of each test is located in the output of that test's directory.
+
+Example: Test 2 has an input file located at /insight_testsuite/test_2/input/complaints.csv, and has an output file located at /insight_testsuite/test_2/output/report.csv
 
 ## Source code
 The source code is located in the src directory of the repository. 
